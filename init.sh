@@ -20,20 +20,14 @@ export LD_LIBRARY_PATH=./linux64:$LD_LIBRARY_PATH
 export SteamAppId="1690800" # -beta latest_experimental
 
 # Launch SteamCMD and update 7 Days to Die (gameid=294420 )
-sudo ./steamcmd.sh +login anonymous +app_update $SteamAppId validate +quit
+sudo ./steamcmd.sh +force_install_dir ~/SatisfactoryDedicatedServer +login anonymous +app_update $SteamAppId -beta public validate +quit
 
 # copy service file from s3
 sudo aws s3 cp s3://8dot3/satisfactory/satisfactory.service /tmp/
-sudo chmod +x /tmp/satisfactory.service
 
+sudo chmod +x /tmp/satisfactory.service
 sudo cp /tmp/satisfactory.service /etc/systemd/system
 sudo systemctl start satisfactory
-
-# Restores latest backup:
-# (location on instance) /root/.local/share/7DaysToDie/Saves/Navezgane/My Game/
-# copy Save files from s3
-#sudo ./restore-from-s3.sh
-#sudo sleep 10; sudo systemctl restart 7days
 sudo systemctl enable satisfactory
 
 # End of line
