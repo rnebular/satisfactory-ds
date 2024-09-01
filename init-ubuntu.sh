@@ -31,7 +31,7 @@ After=syslog.target network.target nss-lookup.target network-online.target
 [Service]
 Environment="LD_LIBRARY_PATH=./linux64"
 ExecStartPre=/usr/games/steamcmd +force_install_dir "/home/steam/SatisfactoryDedicatedServer" +login anonymous +app_update 1690800 validate +quit
-ExecStart=/home/steam/SatisfactoryDedicatedServer/FactoryServer.sh -multihome <ip-address>
+ExecStart=/home/steam/SatisfactoryDedicatedServer/FactoryServer.sh -multihome=<ip-address>
 User=steam
 Group=steam
 StandardOutput=journal
