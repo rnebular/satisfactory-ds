@@ -5,6 +5,7 @@ sudo apt upgrade
 # add steam user
 sudo useradd -m steam
 sudo passwd steam # will prompt for a new password
+sudo usermod -aG sudo steam
 sudo -u steam -s
 cd /home/steam
 
